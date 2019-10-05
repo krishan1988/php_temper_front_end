@@ -1,3 +1,6 @@
+<?php
+require("config.php")
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,7 +137,7 @@ span.psw {
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="http://localhost:8080/v1/auth/login" method="post" id="loginForm">
+  <form class="modal-content animate" action="<?php echo Api_url; ?>auth/login" method="post" id="loginForm">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="image/img_avatar2.png" alt="Avatar" class="avatar">
@@ -184,8 +187,8 @@ $("#loginForm").submit(function(event){
 		 contentType: 'application/json',
 		data : JSON.stringify( { "user":{"name": $('#name').val(), "password": $('#pwd').val() }} )
 	}).done(function(response){ //
-alert(response.code);
-		window.location.href = "http://localhost/temper-front/graph.php?token="+response.code;
+
+		window.location.href = "<?php echo Base_url; ?>graph.php?token="+response.code;
 	});
 });
 </script>
